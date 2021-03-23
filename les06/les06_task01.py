@@ -20,7 +20,7 @@ class TrafficLight:
 
 
     def running(self):
-        for self.__color in cycle(['red', 'yellow', 'green', 'yellow']):
+        for self.__color in cycle(['red', 'yellow', 'green']):
             print(self.__color, datetime.datetime.now())
             if self.__color == 'green':
                 sleep(7)
