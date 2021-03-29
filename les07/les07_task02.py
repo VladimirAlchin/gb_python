@@ -16,34 +16,23 @@ from abc import ABC, abstractmethod
 
 
 class Clothes(ABC):
-    def __init__(self):
-        self.cloth = 0
-
-    def get_all(self, pl):
-        self.cloth += pl
+    def __init__(self, size):
+        self.cloth = int(size)
 
     @abstractmethod
-    def my_method_1(self, size):
+    def my_method_1(self):
         pass
 
 
 class Coat(Clothes):
-    def __init__(self, size):
-        self.size = size
-        self.pl = round(self.size / 6.5 + 0.5, 2)
-        self.get_all(self.pl)
-
     def my_method_1(self):
-        return self.pl
+        return round(self.cloth / 6.5 + 0.5, 2)
 
 
 class Costume(Clothes):
-    def __init__(self, height):
-        self.height = height
-        self.pl = float(self.height) * 2 + 0.3
-
+    @property
     def my_method_1(self):
-        return self.pl
+        return self.cloth * 2 + 0.3
 
 
 coat1 = Coat(10)
@@ -51,9 +40,15 @@ coat2 = Coat(20)
 costum1 = Costume(10)
 costum2 = Costume(20)
 
-print(coat1.my_method_1(),
-      coat2.my_method_1(),
-      costum1.my_method_1(),
-      costum2.my_method_1())
-
-
+print(
+    coat1.my_method_1(),
+    coat2.my_method_1(),
+    costum1.my_method_1,
+    costum2.my_method_1
+)
+print(
+    coat1.my_method_1() +
+    coat2.my_method_1() +
+    costum1.my_method_1 +
+    costum2.my_method_1
+)
