@@ -98,21 +98,11 @@ class Player:
 class Game:
     def __init__(self, p1, p2):
         self.p1 = p1
-
-    # def __str__(self):
-    #     a = '---------- Ваша карточка ---------\n'
-    #     for i in range(0, 3):
-    #         for j in range(0, 9):
-    #             a = a + str(self.p1[i][j])
-    #             if len(str(self.p1[i][j])) == 1:
-    #                 a = a + '   '
-    #             else:
-    #                 a = a + '  '
-    #         a = a + '\n'
-    #     return str(a)
+        self.p2 = p2
+        self.move = list(range(1, 91))
 
     def move(self):
-        pass
+        self.move = list(range(1, 91))
 
 player01 = Player('Vova')
 player02 = Player('PC')
