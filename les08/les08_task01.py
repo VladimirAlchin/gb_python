@@ -64,7 +64,17 @@ class Player:
         self.card = list(self.__card())
 
     def __str__(self):
-        return str(self.card)
+        a = f'----- Карточка {self.name} -----\n'
+        for i in range(0, 3):
+            for j in range(0, 9):
+                a = a + str(self.card[i][j])
+                if len(str(self.card[i][j])) == 1:
+                    a = a + '  '
+                else:
+                    a = a + ' '
+            a = a + '\n'
+        a = a + '---------------------------\n'
+        return str(a)
 
     def __card(self):
         player_card = []
@@ -81,16 +91,25 @@ class Player:
             player_card.append(a)
         return player_card
 
+    def __getitem__(self, item):
+        return self.card[item]
+
 
 class Game:
     def __init__(self, p1, p2):
         self.p1 = p1
 
-    def __str__(self):
-        a = '------ Ваша карточка -----\n'
-        # for i in range(len(self.p1)):
-        print(list(self.p1)[0][0])
-        return a
+    # def __str__(self):
+    #     a = '---------- Ваша карточка ---------\n'
+    #     for i in range(0, 3):
+    #         for j in range(0, 9):
+    #             a = a + str(self.p1[i][j])
+    #             if len(str(self.p1[i][j])) == 1:
+    #                 a = a + '   '
+    #             else:
+    #                 a = a + '  '
+    #         a = a + '\n'
+    #     return str(a)
 
     def move(self):
         pass
@@ -99,8 +118,8 @@ player01 = Player('Vova')
 player02 = Player('PC')
 play = Game(player01, player02)
 
-# print(player01)
-# print(player02)
+print(player01)
+print(player02)
 print(play)
 
 
