@@ -112,10 +112,12 @@ class Game:
                 try:
                     del_player_number = self.p1[i].index(self.move[del_number])
                     self.p1[i][del_player_number] = '--'
+                    # self.fine += 1
                     break
                 except ValueError:
                     del_player_number = -1
             del self.move[del_player_number]
+            # print(self.fine)
             if (user_ans == 'y' and del_player_number == -1) or (user_ans == 'n' and del_player_number > -1):
                 print('Вы проиграли, приходите еще!')
                 exit()
