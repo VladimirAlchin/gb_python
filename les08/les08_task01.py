@@ -65,8 +65,8 @@ class Player:
 
     def __str__(self):
         a = f'----- Карточка {self.name} -----\n'
-        for i in range(0, 3):
-            for j in range(0, 9):
+        for i in range(len(self.card)):
+            for j in range(len(self.card[i])):
                 a = a + str(self.card[i][j])
                 if len(str(self.card[i][j])) == 1:
                     a = a + '  '
@@ -99,17 +99,21 @@ class Game:
     def __init__(self, p1, p2):
         self.p1 = p1
         self.p2 = p2
-        self.move = list(range(1, 91))
+        # self.move = list(range(1, 91))
 
     def move(self):
+        print(self.p1)
+        print(self.p2)
         self.move = list(range(1, 91))
+
+
 
 player01 = Player('Vova')
 player02 = Player('PC')
 play = Game(player01, player02)
+play.move()
+# print(player01)
+# print(player02)
 
-print(player01)
-print(player02)
-print(play)
 
 
