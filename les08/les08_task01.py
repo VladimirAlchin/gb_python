@@ -62,6 +62,7 @@ class Player:
     def __init__(self, name):
         self.name = name
         self.card = list(self.__card())
+        self.fine = 0
 
     def __str__(self):
         a = f'----- Карточка {self.name} -----\n'
@@ -99,21 +100,28 @@ class Game:
     def __init__(self, p1, p2):
         self.p1 = p1
         self.p2 = p2
-        # self.move = list(range(1, 91))
-
-    def move(self):
-        print(self.p1)
-        print(self.p2)
         self.move = list(range(1, 91))
 
+    def move(self):
+        while len(self.move) > 75:
+            print(self.p1)
+            print(self.p2)
+            del_number = random.randint(0, len(self.move) - 1)
+            user_ans = input(f'Выпало число: {self.move[del_number]}\nЗачеркнуть цифру? y/n ')
+            for i in range(0, 3):
+                try:
+                    del_player_number = self.p1[i].index(self.move[del_number])
+                    self.p1[i][del_player_number] = '--'
+                    break
+                except ValueError:
+                    del_player_number = -1
+            del self.move[del_player_number]
+            if (user_ans == 'y' and del_player_number == -1) or (user_ans == 'n' and del_player_number > -1):
+                print('Вы проиграли, приходите еще!')
+                exit()
 
 
 player01 = Player('Vova')
 player02 = Player('PC')
 play = Game(player01, player02)
 play.move()
-# print(player01)
-# print(player02)
-
-
-
